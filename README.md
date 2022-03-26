@@ -34,3 +34,9 @@
   链接：https://github.com/bytedance/monoio
   
   描述：
+
+- smol
+  
+  链接：https://github.com/smol-rs/async-executor
+  
+  描述：代码比较精简，https://zhuanlan.zhihu.com/p/137353103
