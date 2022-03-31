@@ -10,11 +10,19 @@
 
   1. /libc-test/src/functional/pthread_cancel.exe 
 
-     依赖的syscalls：
+     实现了`tkill`，`kill`，`tgkill` (TODO)，<font color=#7FFF00>已通过</font>，内容在lsm分支。
 
-     `pthread_create`、`pthread_cancel`、`pthread_join`
+  2. libc-test/functional/pthread_cancel-static.exe
+
+     <font color=#7FFF00>已通过</font>，内容在lsm分支
 
   2. /libc-test/src/functional/pthread_cancel-points.exe 
+
+     **时好时不好**
+
+  4. libc-test/functional/pthread_cancel-points-static.exe
+
+     <font color=#7FFF00>已通过</font>，内容在lsm分支
 
   3. /libc-test/src/functional/pthread_cond.exe                    
 
@@ -27,6 +35,31 @@
   7. /libc-test/src/functional/pthread_tsd.exe 
 
 - 使得zCore通过regression下的多线程用例
+
+  1. /libc-test/src/regression/pthread_cancel-sem_wait.exe
+
+     **时好时不好**
+
+  2. libc-test/regression/pthread_cancel-sem_wait-static.exe
+
+     <font color=#7FFF00>已通过</font>，内容在lsm分支。
+
+  3. /libc-test/src/regression/pthread_exit-cancel.exe
+
+     **有希望修好**
+
+  4. /libc-test/regression/pthread_exit-cancel-static.exe 
+
+     **有希望修好**
+  
+  5. libc-test/regression/pthread_exit-dtor.exe
+  
+     <font color=#7FFF00>已通过</font>，内容在lsm分支。
+  
+  6. /libc-test/regression/pthread_exit-dtor-static.exe 
+  
+     <font color=#7FFF00>已通过</font>，内容在lsm分支。
+  
 
 ### 第二阶段：调度器设计
 
