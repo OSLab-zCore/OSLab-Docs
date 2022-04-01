@@ -8,21 +8,21 @@
 
   用例有：
 
-  1. /libc-test/src/functional/pthread_cancel.exe 
+  1. /libc-test/functional/pthread_cancel.exe 
 
-     实现了`tkill`，`kill`，`tgkill` (TODO)，<font color=#7FFF00>已通过</font>，内容在lsm分支。
+     实现了`tkill`，`kill`，`tgkill` ，<font color=#7FFF00>**已通过**</font>，内容在lsm分支。
 
-  2. libc-test/functional/pthread_cancel-static.exe
+  2. /libc-test/functional/pthread_cancel-static.exe
 
-     <font color=#7FFF00>已通过</font>，内容在lsm分支
+     <font color=#7FFF00>**已通过**</font>，内容在lsm分支
 
   2. /libc-test/src/functional/pthread_cancel-points.exe 
 
      **时好时不好**
 
-  4. libc-test/functional/pthread_cancel-points-static.exe
+  4. /libc-test/functional/pthread_cancel-points-static.exe
 
-     <font color=#7FFF00>已通过</font>，内容在lsm分支
+     <font color=#7FFF00>**已通过**</font>，内容在lsm分支
 
   3. /libc-test/src/functional/pthread_cond.exe                    
 
@@ -40,9 +40,9 @@
 
      **时好时不好**
 
-  2. libc-test/regression/pthread_cancel-sem_wait-static.exe
+  2. /libc-test/regression/pthread_cancel-sem_wait-static.exe
 
-     <font color=#7FFF00>已通过</font>，内容在lsm分支。
+     <font color=#7FFF00>**已通过**</font>，内容在lsm分支。
 
   3. /libc-test/src/regression/pthread_exit-cancel.exe
 
@@ -52,13 +52,13 @@
 
      **有希望修好**
   
-  5. libc-test/regression/pthread_exit-dtor.exe
+  5. /libc-test/regression/pthread_exit-dtor.exe
   
      <font color=#7FFF00>已通过</font>，内容在lsm分支。
   
   6. /libc-test/regression/pthread_exit-dtor-static.exe 
   
-     <font color=#7FFF00>已通过</font>，内容在lsm分支。
+     <font color=#7FFF00>**已通过**</font>，内容在lsm分支。
   
 
 ### 第二阶段：调度器设计
