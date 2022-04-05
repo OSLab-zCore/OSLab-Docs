@@ -1,65 +1,43 @@
 # OSLab-Docs
 
+2022春OS大实验文档        刘松铭、于子淳
+
 ## Todos
 
 ### 第一阶段：修复zCore多线程
 
-- 使得zCore通过functional下的多线程用例
+- 已经通过的多线程用例
 
-  用例有：
-
-  1. /libc-test/functional/pthread_cancel.exe 
-
-     实现了`tkill`，`kill`，`tgkill` ，<font color=#7FFF00>**已通过**</font>，内容在lsm分支。
-
+  1. /libc-test/functional/pthread_cancel.exe
   2. /libc-test/functional/pthread_cancel-static.exe
-
-     <font color=#7FFF00>**已通过**</font>，内容在lsm分支
-
-  2. /libc-test/src/functional/pthread_cancel-points.exe 
-
-     **时好时不好**
-
+  3. /libc-test/src/functional/pthread_cancel-points.exe
   4. /libc-test/functional/pthread_cancel-points-static.exe
+  5. /libc-test/functional/pthread_cond.exe
+  6. /libc-test/functional/pthread_cond-static.exe
+  7. /libc-test/functional/pthread_tsd.exe
+  8. /libc-test/functional/pthread_tsd-static.exe
+  9. /libc-test/regression/pthread-robust-detach.exe
+  10. /libc-test/regression/pthread-robust-detach-static.exe
+  11. /libc-test/regression/pthread_cond-smasher.exe
+  12. /libc-test/regression/pthread_cond-smasher-static.exe
+  13. /libc-test/regression/pthread_condattr_setclock.exe
+  14. /libc-test/regression/pthread_condattr_setclock-static.exe
+  15. /libc-test/regression/pthread_once-deadlock.exe
+  16. /libc-test/regression/pthread_once-deadlock-static.exe
+  17. /libc-test/regression/pthread_rwlock-ebusy.exe
+  18. /libc-test/regression/pthread_rwlock-ebusy-static.exe
+  19. /libc-test/src/regression/pthread_cancel-sem_wait.exe
+  20. /libc-test/regression/pthread_cancel-sem_wait-static.exe
+  21. /libc-test/src/regression/pthread_exit-cancel.exe
+  22. /libc-test/regression/pthread_exit-cancel-static.exe
+  23. /libc-test/regression/pthread_exit-dtor.exe
+  24. /libc-test/regression/pthread_exit-dtor-static.exe
 
-     <font color=#7FFF00>**已通过**</font>，内容在lsm分支
+- 进一步完善的地方：
+  1. async的handle signal
+  2. signal mask要继承自之前的线程
+  3. 完善tkill kill等的参数支持
 
-  3. /libc-test/src/functional/pthread_cond.exe                    
-
-  4. /libc-test/src/functional/pthread_mutex.exe                   
-
-  5. /libc-test/src/functional/pthread_mutex_pi.exe                  
-
-  6. /libc-test/src/functional/pthread_robust.exe                   
-
-  7. /libc-test/src/functional/pthread_tsd.exe 
-
-- 使得zCore通过regression下的多线程用例
-
-  1. /libc-test/src/regression/pthread_cancel-sem_wait.exe
-
-     **时好时不好**
-
-  2. /libc-test/regression/pthread_cancel-sem_wait-static.exe
-
-     <font color=#7FFF00>**已通过**</font>，内容在lsm分支。
-
-  3. /libc-test/src/regression/pthread_exit-cancel.exe
-
-     **有希望修好**
-
-  4. /libc-test/regression/pthread_exit-cancel-static.exe 
-
-     **有希望修好**
-  
-  5. /libc-test/regression/pthread_exit-dtor.exe
-  
-     <font color=#7FFF00>已通过</font>，内容在lsm分支。
-  
-  6. /libc-test/regression/pthread_exit-dtor-static.exe 
-  
-     <font color=#7FFF00>**已通过**</font>，内容在lsm分支。
-  
 
 ### 第二阶段：调度器设计
 
@@ -106,3 +84,4 @@
   链接：https://github.com/smol-rs/async-executor
   
   描述：代码比较精简，https://zhuanlan.zhihu.com/p/137353103
+
