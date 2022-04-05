@@ -2,7 +2,7 @@
 
 2022春OS大实验文档        刘松铭、于子淳
 
-## Todos
+## 进度日志
 
 ### 第一阶段：修复zCore多线程
 
@@ -32,11 +32,15 @@
   22. /libc-test/regression/pthread_exit-cancel-static.exe
   23. /libc-test/regression/pthread_exit-dtor.exe
   24. /libc-test/regression/pthread_exit-dtor-static.exe
-
-- 进一步完善的地方：
+- 可以进一步完善的地方：
   1. async的handle signal
   2. signal mask要继承自之前的线程
-  3. 完善tkill kill等的参数支持
+  3. 完善tkill、tgkill、kill等的参数支持
+  3. 修改一些为了Debug编写的不优雅代码，避免给后人挖坑
+
+中期报告结束，中期报告的ppt和部分讲稿在[OSLab-Docs](https://github.com/OSLab-zCore/OSLab-Docs)仓库（这里的仓库均指本organization的仓库）下的`中期报告/`下。刘松铭编写的zCore信号支持在[zCore](https://github.com/OSLab-zCore/zCore)仓库下的[lsm](https://github.com/OSLab-zCore/zCore/tree/lsm)分支，于子淳编写的futex相关支持在[yuzc](https://github.com/OSLab-zCore/zCore/tree/yuzc)分支，二人合并的代码在[lsm-yzc-merge](https://github.com/OSLab-zCore/zCore/tree/lsm-yzc-merge)分支。
+
+*2022.4.5 update*
 
 
 ### 第二阶段：调度器设计
@@ -51,33 +55,33 @@
 ## 调研汇总
 - glommio
 
-     链接：https://www.datadoghq.com/blog/engineering/introducing-glommio/
+     链接：https://github.com/DataDog/glommio
      
-     描述：
+     描述：基于io_uring的rust异步库，https://www.datadoghq.com/blog/engineering/introducing-glommio/
      
 - naive fifo executor
 
      链接：https://github.com/rcore-os/executor
      
-     描述：就是一个fifo的executor
+     描述：简单fifo调度器
      
 - PreemptiveScheduler
 
   链接：https://github.com/Deathwish5/PreemptiveScheduler
   
-  描述：
+  描述：张译仁学长基于王辉宇学长的工作改进的抢占调度器
   
 - tokio
 
   链接：https://github.com/tokio-rs/tokio
   
-  描述：
+  描述：异步rust库
   
 - monoio
 
   链接：https://github.com/bytedance/monoio
   
-  描述：
+  描述：字节实现的rust runtime
 
 - smol
   
