@@ -38,9 +38,17 @@
   3. 完善tkill、tgkill、kill等的参数支持
   3. 修改一些为了Debug编写的不优雅代码，避免给后人挖坑
 
+----------------
+
 中期报告结束，中期报告的ppt和部分讲稿在[OSLab-Docs](https://github.com/OSLab-zCore/OSLab-Docs)仓库（这里的仓库均指本organization的仓库）下的`中期报告/`下。刘松铭编写的zCore信号支持在[zCore](https://github.com/OSLab-zCore/zCore)仓库下的[lsm](https://github.com/OSLab-zCore/zCore/tree/lsm)分支，于子淳编写的futex相关支持在[yuzc](https://github.com/OSLab-zCore/zCore/tree/yuzc)分支，二人合并的代码在[lsm-yzc-merge](https://github.com/OSLab-zCore/zCore/tree/lsm-yzc-merge)分支。
 
-*2022.4.5 update*
+*2022.4.5 updated*
+
+----------
+
+刘松铭新增任务：在rcore-tutorial-v3上实现一个简化的signal机制，能让app的signal handler处理来自其他app或内核的signals。参考链接：https://github.com/rcore-os/rCore-Tutorial-v3/blob/ch9/os/src/task/signal.rs
+
+*2022.4.10 updated*
 
 
 ### 第二阶段：调度器设计
