@@ -55,7 +55,7 @@
 
 - 去除了`handle_signal()`的hard codes
 - 去除了tkill、tgkill、kill等的hard codes，完善了部分的参数支持
-- 去除了不必要的注释，再没有完全实现linux标准的位置加上了`warn!`，避免给后人挖坑
+- 去除了不必要的注释，在没有完全实现linux标准的位置加上了`warn!`，避免给后人挖坑
 
 Todos
 
@@ -69,6 +69,15 @@ Todos
 - 修复与musl数据结构不对齐的问题
   - linux-object/src/thread.rs
 
+[lsm-yzc-merge](https://github.com/OSLab-zCore/zCore/tree/lsm-yzc-merge) 分支的修改进度
+
+- 去除了 futex、get_robust_list、set_robust_list 等的 hard codes
+- 增加了对于函数参数的文档注释，在没有完全按照标准实现的位置加上了 `warn!`，避免给后人挖坑
+
+Todos
+
+- 测试 futex 相关测例在 x86 上的支持情况，预期改动不大
+
 *2022.4.11 updated*
 
 
@@ -81,7 +90,27 @@ Todos
 - 多核，专核专用，动态调整，一个核一个 runtime，利用 shared memory 通信
 - 编写测试用例
 
+---
+
+于子淳新增任务：
+
+- 先解决抢占式调度器通过不了测例的问题
+
+- 使用 `virt` 模式（较弱）开两个核心，测试不同程序调度：
+  - `sleep`
+  - `fork` 子进程
+  - 隔一秒输出一次
+
+- 仿照 `Linux` 的三层调度器来实现
+
+- 调高时钟中断频率
+
+- `uring` 分支要看懂
+
+*2022.4.11 updated*
+
 ## 调研汇总
+
 - glommio
 
      链接：https://github.com/DataDog/glommio
