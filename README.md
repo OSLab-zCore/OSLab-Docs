@@ -33,9 +33,8 @@
   23. /libc-test/regression/pthread_exit-dtor.exe
   24. /libc-test/regression/pthread_exit-dtor-static.exe
 - 可以进一步完善的地方：
-  1. async的handle signal
-  2. signal mask要继承自之前的线程
-  3. 完善tkill、tgkill、kill等的参数支持
+  1. async的`handle_signal()`
+  2. 完善tkill、tgkill、kill等的参数支持
   3. 修改一些为了Debug编写的不优雅代码，避免给后人挖坑
 
 ----------------
@@ -49,6 +48,28 @@
 刘松铭新增任务：在rcore-tutorial-v3上实现一个简化的signal机制，能让app的signal handler处理来自其他app或内核的signals。参考链接：https://github.com/rcore-os/rCore-Tutorial-v3/blob/ch9/os/src/task/signal.rs
 
 *2022.4.10 updated*
+
+---------
+
+[lsm](https://github.com/OSLab-zCore/zCore/tree/lsm)分支的修改进度
+
+- 去除了`handle_signal()`的hard codes
+- 去除了tkill、tgkill、kill等的hard codes，完善了部分的参数支持
+- 去除了不必要的注释，再没有完全实现linux标准的位置加上了`warn!`，避免给后人挖坑
+
+Todos
+
+- 完善对x86的支持
+  - kernel-hal/src/common/context.rs
+  - linux-object/src/signal/mod.rs
+- 修复外部库`rcore-fs`的bug，并去除测试时使用的hard codes
+  - linux-object/src/fs/mod.rs
+  - linux-syscall/src/file/dir.rs
+  - linux-syscall/src/file/fd.rs
+- 修复与musl数据结构不对齐的问题
+  - linux-object/src/thread.rs
+
+*2022.4.11 updated*
 
 
 ### 第二阶段：调度器设计
