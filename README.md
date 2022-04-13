@@ -66,8 +66,9 @@ Todos
   - linux-object/src/fs/mod.rs
   - linux-syscall/src/file/dir.rs
   - linux-syscall/src/file/fd.rs
-- 修复与musl数据结构不对齐的问题
+- 修复SignalStack与musl数据结构不对齐的问题
   - linux-object/src/thread.rs
+  - 原有测例CI不过：/libc-test/regression/sigaltstack.exe
 
 [lsm-yzc-merge](https://github.com/OSLab-zCore/zCore/tree/lsm-yzc-merge) 分支的修改进度
 
@@ -79,6 +80,8 @@ Todos
 - 测试 futex 相关测例在 x86 上的支持情况，预期改动不大
 
 *2022.4.11 updated*
+
+*2022.4.13 modified* 
 
 
 ### 第二阶段：调度器设计
