@@ -83,6 +83,12 @@ Todos
 
 *2022.4.13 modified* 
 
+-----
+
+新发现一个 x86 无法通过但 riscv可以通过的测例：/libc-test/src/regression/pthread_cancel-sem_wait.exe
+
+*2022.4.13 updated* 
+
 
 ### 第二阶段：调度器设计
 
