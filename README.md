@@ -89,6 +89,20 @@ Todos
 
 *2022.4.13 updated* 
 
+-----
+
+[lsm](https://github.com/OSLab-zCore/zCore/tree/lsm)分支的修改进度
+
+- 已完善对x86的部分支持，支持修改ra
+- 修复SignalStack数据不对齐的问题
+- x86下可以通过/libc-test/src/regression/pthread_cancel-sem_wait.exe
+
+todos
+
+- /libc-test/regression/sigaltstack.exe测例的问题是一个新功能，设计signal换栈
+
+*2022.4.15 updated* 
+
 
 ### 第二阶段：调度器设计
 
