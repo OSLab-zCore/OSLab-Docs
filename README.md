@@ -101,8 +101,27 @@ todos
 
 - /libc-test/regression/sigaltstack.exe测例的问题是一个新功能，设计signal换栈
 
-*2022.4.15 updated* 
+*2022.4.15 updated*
 
+[lsm-yzc-merge](https://github.com/OSLab-zCore/zCore/tree/lsm-yzc-merge) 分支的修改进度
+
+- 修复 CI 的 Build 和 Deploy docs 相关问题
+- Test CI zircon 的 libos 测例运行不稳定，助教和工程师建议多跑几次
+- 修改测试文件，提交新增多线程相关测例的 pull request 到 [zcore-test](https://github.com/rcore-os/zcore-tests/pulls) 仓库
+
+*2022.4.15 updated*
+
+于子淳新增任务：
+
+- 先解决抢占式调度器通过不了测例的问题（已完成），通过的 CI 在 [zcore-update-lock](https://github.com/DeathWish5/zCore/commits/zcore-update-lock) 分支
+- `uring` 分支代码阅读（已完成）
+- 使用 `virt` 模式开两个核心，调高时钟中断频率，测试不同程序调度：
+  - `sleep`
+  - `fork` 子进程
+  - 隔一秒输出一次
+- 仿照 `Linux` 的三层调度器来实现
+
+*2022.4.15 updated*
 
 ### 第二阶段：调度器设计
 
@@ -112,25 +131,6 @@ todos
 - 只要时钟中断就 yield 不科学，因为不确定本任务执行了多久
 - 多核，专核专用，动态调整，一个核一个 runtime，利用 shared memory 通信
 - 编写测试用例
-
----
-
-于子淳新增任务：
-
-- 先解决抢占式调度器通过不了测例的问题
-
-- 使用 `virt` 模式（较弱）开两个核心，测试不同程序调度：
-  - `sleep`
-  - `fork` 子进程
-  - 隔一秒输出一次
-
-- 仿照 `Linux` 的三层调度器来实现
-
-- 调高时钟中断频率
-
-- `uring` 分支要看懂
-
-*2022.4.11 updated*
 
 ## 调研汇总
 
