@@ -62,7 +62,7 @@ Todos
 - 完善对x86的支持
   - kernel-hal/src/common/context.rs
   - linux-object/src/signal/mod.rs
-- 修复外部库`rcore-fs`的bug，并去除测试时使用的hard codes
+- 测试时使用的hard codes
   - linux-object/src/fs/mod.rs
   - linux-syscall/src/file/dir.rs
   - linux-syscall/src/file/fd.rs
@@ -110,6 +110,8 @@ todos
 - 修改测试文件，提交新增多线程相关测例的 pull request 到 [zcore-test](https://github.com/rcore-os/zcore-tests/pulls) 仓库
 
 *2022.4.15 updated*
+
+------------
 
 于子淳新增任务：
 
