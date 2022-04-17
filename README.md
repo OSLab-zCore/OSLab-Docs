@@ -103,7 +103,7 @@ todos
 
 *2022.4.15 updated*
 
-[lsm-yzc-merge](https://github.com/OSLab-zCore/zCore/tree/lsm-yzc-merge) 分支的修改进度
+[lsm-yzc-merge](https://github.com/OSLab-zCore/zCore/tree/lsm-yzc-merge) 分支的修改进度：
 
 - 修复 CI 的 Build 和 Deploy docs 相关问题
 - Test CI zircon 的 libos 测例运行不稳定，助教和工程师建议多跑几次
@@ -112,6 +112,23 @@ todos
 *2022.4.15 updated*
 
 ------------
+
+[lsm-yzc-merge](https://github.com/OSLab-zCore/zCore/tree/lsm-yzc-merge) 分支的修改进度：
+
+- 修复 CI 的 Build 和 Deploy docs 由原[lsm](https://github.com/OSLab-zCore/zCore/tree/lsm)分支的代码带来的问题
+
+*2022.4.17 updated*
+
+### 第二阶段：调度器设计
+
+- waker page 保序和锁的竞争做一个权衡：需要测试用户调度频率、zCore 协程执行时间等
+- weak executor 应该放在池子中而不是释放
+- 区分用户任务和纯内核任务：把用户程序当成线程，延迟敏感单独放 Ring，加入 tag 等
+- 只要时钟中断就 yield 不科学，因为不确定本任务执行了多久
+- 多核，专核专用，动态调整，一个核一个 runtime，利用 shared memory 通信
+- 编写测试用例
+
+-------
 
 于子淳新增任务：
 
@@ -124,15 +141,6 @@ todos
 - 仿照 `Linux` 的三层调度器来实现
 
 *2022.4.15 updated*
-
-### 第二阶段：调度器设计
-
-- waker page 保序和锁的竞争做一个权衡：需要测试用户调度频率、zCore 协程执行时间等
-- weak executor 应该放在池子中而不是释放
-- 区分用户任务和纯内核任务：把用户程序当成线程，延迟敏感单独放 Ring，加入 tag 等
-- 只要时钟中断就 yield 不科学，因为不确定本任务执行了多久
-- 多核，专核专用，动态调整，一个核一个 runtime，利用 shared memory 通信
-- 编写测试用例
 
 ## 调研汇总
 
