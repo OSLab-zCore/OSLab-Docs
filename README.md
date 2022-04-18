@@ -47,7 +47,15 @@
 
 刘松铭新增任务：在rcore-tutorial-v3上实现一个简化的signal机制，能让app的signal handler处理来自其他app或内核的signals。参考链接：https://github.com/rcore-os/rCore-Tutorial-v3/blob/ch9/os/src/task/signal.rs
 
+需要实现的系统调用或结构如下：
+
+- [ ] sigaction（结构和系统调用）
+- [x] kill（补全发射信号）
+- [x] sigprocmask
+
 *2022.4.10 updated*
+
+*2022.4.18 modified* 
 
 ---------
 
