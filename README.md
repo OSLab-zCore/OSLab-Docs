@@ -49,13 +49,35 @@
 
 需要实现的系统调用或结构如下：
 
-- [ ] sigaction（结构和系统调用）
+- [x] sigaction（结构和系统调用）
+
+  增加sigaction的结构，用于存储每个signal对应的action，action包含处理signal时应该设置的mask以及handler的地址。
+
 - [x] kill（补全发射信号）
+
+  将发射信号补全至31个（不包含第0个，第0个是默认信号）。通过kill系统调用传递信号。
+
 - [x] sigprocmask
+
+  新增mask结构体，mask的作用是block某些信号（用bitmap存储），被block的信号暂时不被处理。
+
+- [x] sigreturn
+
+  sigreturn时除去信号处理的标记，并且恢复trap frame。
+
+- [x] 信号处理的过程
+
+  仅处理当前不被block的信号。信号分为内核信号和用户信号，内核信号按照规定动作进行处理。此外，sigaction不允许为内核信号设置action；用户信号则根据sigaction进行处理，即保持当前的trap frame，将sepc改成handler的地址，mask设置为sigaction中对应信号的mask，将调用sigreturn的汇编指令插入栈中，将ra设为栈中汇编指令的开始地址。
+
+  新增killed和frozen标志，对应SIGKILL和SIGSTOP，前者的作用是标记进程是否被杀死，后者是的作用是标记是否被冻结。被冻结的进程当前暂时先不处理信号，yield出去。下次被schedule的时候检查是否有信号，然后继续yield。如此往复直到被解冻或杀死。
+
+- [ ] 用户库
 
 *2022.4.10 updated*
 
 *2022.4.18 modified* 
+
+*2022.4.20 modified* 
 
 ---------
 
