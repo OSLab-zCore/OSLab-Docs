@@ -111,11 +111,8 @@ Todos
 
 *2022.4.11 updated*
 
-*2022.4.13 modified* 
+- 新发现一个 x86 无法通过但 riscv可以通过的测例：/libc-test/src/regression/pthread_cancel-sem_wait.exe
 
------
-
-新发现一个 x86 无法通过但 riscv可以通过的测例：/libc-test/src/regression/pthread_cancel-sem_wait.exe
 
 *2022.4.13 updated* 
 
@@ -137,17 +134,28 @@ todos
 
 - 修复 CI 的 Build 和 Deploy docs 相关问题
 - Test CI zircon 的 libos 测例运行不稳定，助教和工程师建议多跑几次
-- 修改测试文件，提交新增多线程相关测例的 pull request 到 [zcore-test](https://github.com/rcore-os/zcore-tests/pulls) 仓库
+- 修改测试文件，提交新增多线程相关测例的 pull request 到 [zcore-test](https://github.com/rcore-os/zcore-tests) 仓库
 
 *2022.4.15 updated*
-
-------------
-
-[lsm-yzc-merge](https://github.com/OSLab-zCore/zCore/tree/lsm-yzc-merge) 分支的修改进度：
 
 - 修复 CI 的 Build 和 Deploy docs 由原[lsm](https://github.com/OSLab-zCore/zCore/tree/lsm)分支的代码带来的问题
 
 *2022.4.17 updated*
+
+- 尝试 merge 到 master，但发现部分新增测例在合并后无法通过
+- 修复了合并后 /libc-test/src/functional/pthread_cancel.exe 超时的问题
+- 提交对多线程相关测例状态修改的 pull request 到 [zcore-test](https://github.com/rcore-os/zcore-tests) 仓库
+
+*2022.4.19 updated*
+
+- 提交 pull request 到 [zCore](https://github.com/rcore-os/zCore) 主仓库
+- 修正 github url 的问题
+
+*2022.4.20 updated*
+
+- 通过 CI 和 reviewer 的检查，成功合并进 [zCore](https://github.com/rcore-os/zCore) 主分支 :fireworks:
+
+*2022.4.21 updated*
 
 ### 第二阶段：调度器设计
 
