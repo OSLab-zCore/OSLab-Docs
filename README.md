@@ -83,7 +83,7 @@
 
 *2022.4.18 modified* 
 
-*2022.4.20 modified* 
+*2022.4.20 modified*
 
 *2022.4.22 modified* 
 
@@ -150,6 +150,7 @@ todos
 
 *2022.4.17 updated*
 
+- 按标准实现了 `LOCK_PI` 和 `UNLOCK_PI`，修复了 /libc-test/functional/pthread_robust.exe 无法通过的问题
 - 尝试 merge 到 master，但发现部分新增测例在合并后无法通过
 - 修复了合并后 /libc-test/src/functional/pthread_cancel.exe 超时的问题
 - 提交对多线程相关测例状态修改的 pull request 到 [zcore-test](https://github.com/rcore-os/zcore-tests) 仓库
@@ -178,15 +179,21 @@ todos
 
 于子淳新增任务：
 
-- 先解决抢占式调度器通过不了测例的问题（已完成），通过的 CI 在 [zcore-update-lock](https://github.com/DeathWish5/zCore/commits/zcore-update-lock) 分支
-- `uring` 分支代码阅读（已完成）
-- 使用 `virt` 模式开两个核心，调高时钟中断频率，测试不同程序调度：
+- [x] 先解决抢占式调度器通过不了测例的问题，通过的 CI 在 [zcore-update-lock](https://github.com/DeathWish5/zCore/commits/zcore-update-lock) 分支
+- [x]  `uring` 分支代码阅读
+- [x]  使用 `virt` 模式开多个核心（目前启动有问题），调高时钟中断频率，测试不同程序调度：
   - `sleep`
   - `fork` 子进程
   - 隔一秒输出一次
-- 仿照 `Linux` 的三层调度器来实现
+- [ ]  riscv64-linux-musl-gcc 编译报错
+- [ ]  "Modern Concurrency Platforms Require Modern System-Call Techniques" 论文阅读
+- [ ]  仿照 `Linux` 的三层调度器来实现
 
 *2022.4.15 updated*
+
+*2022.4.20 modified*
+
+*2022.4.22 modified*
 
 ## 调研汇总
 
