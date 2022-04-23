@@ -14,24 +14,26 @@
   4. /libc-test/functional/pthread_cancel-points-static.exe
   5. /libc-test/functional/pthread_cond.exe
   6. /libc-test/functional/pthread_cond-static.exe
-  7. /libc-test/functional/pthread_tsd.exe
-  8. /libc-test/functional/pthread_tsd-static.exe
-  9. /libc-test/regression/pthread-robust-detach.exe
-  10. /libc-test/regression/pthread-robust-detach-static.exe
-  11. /libc-test/regression/pthread_cond-smasher.exe
-  12. /libc-test/regression/pthread_cond-smasher-static.exe
-  13. /libc-test/regression/pthread_condattr_setclock.exe
-  14. /libc-test/regression/pthread_condattr_setclock-static.exe
-  15. /libc-test/regression/pthread_once-deadlock.exe
-  16. /libc-test/regression/pthread_once-deadlock-static.exe
-  17. /libc-test/regression/pthread_rwlock-ebusy.exe
-  18. /libc-test/regression/pthread_rwlock-ebusy-static.exe
-  19. /libc-test/src/regression/pthread_cancel-sem_wait.exe
-  20. /libc-test/regression/pthread_cancel-sem_wait-static.exe
-  21. /libc-test/src/regression/pthread_exit-cancel.exe
-  22. /libc-test/regression/pthread_exit-cancel-static.exe
-  23. /libc-test/regression/pthread_exit-dtor.exe
-  24. /libc-test/regression/pthread_exit-dtor-static.exe
+  7. /libc-test/functional/pthread_robust.exe
+  8. /libc-test/functional/pthread_robust-static.exe
+  9. /libc-test/functional/pthread_tsd.exe
+  10. /libc-test/functional/pthread_tsd-static.exe
+  11. /libc-test/regression/pthread-robust-detach.exe
+  12. /libc-test/regression/pthread-robust-detach-static.exe
+  13. /libc-test/regression/pthread_cond-smasher.exe
+  14. /libc-test/regression/pthread_cond-smasher-static.exe
+  15. /libc-test/regression/pthread_condattr_setclock.exe
+  16. /libc-test/regression/pthread_condattr_setclock-static.exe
+  17. /libc-test/regression/pthread_once-deadlock.exe
+  18. /libc-test/regression/pthread_once-deadlock-static.exe
+  19. /libc-test/regression/pthread_rwlock-ebusy.exe
+  20. /libc-test/regression/pthread_rwlock-ebusy-static.exe
+  21. /libc-test/src/regression/pthread_cancel-sem_wait.exe
+  22. /libc-test/regression/pthread_cancel-sem_wait-static.exe
+  23. /libc-test/src/regression/pthread_exit-cancel.exe
+  24. /libc-test/regression/pthread_exit-cancel-static.exe
+  25. /libc-test/regression/pthread_exit-dtor.exe
+  26. /libc-test/regression/pthread_exit-dtor-static.exe
 - 可以进一步完善的地方：
   1. async的`handle_signal()`
   2. 完善tkill、tgkill、kill等的参数支持
