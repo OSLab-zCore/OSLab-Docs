@@ -140,7 +140,7 @@ todos
 
 *2022.4.15 updated*
 
-[lsm-yzc-merge](https://github.com/OSLab-zCore/zCore/tree/lsm-yzc-merge) 分支的修改进度：
+[lsm-yzc-merge](https://github.com/OSLab-zCore/zCore/tree/lsm-yzc-merge) 分支的修改进度
 
 - 修复 CI 的 Build 和 Deploy docs 相关问题
 - Test CI zircon 的 libos 测例运行不稳定，助教和工程师建议多跑几次
@@ -187,15 +187,38 @@ todos
   - `sleep`
   - `fork` 子进程
   - 隔一秒输出一次
-- [ ]  riscv64-linux-musl-gcc 编译报错
-- [ ]  "Modern Concurrency Platforms Require Modern System-Call Techniques" 论文阅读
-- [ ]  仿照 `Linux` 的三层调度器来实现
+- [x]  riscv64-linux-musl-gcc 编译报错：在 Ubuntu 上重装
+- [x]  "Modern Concurrency Platforms Require Modern System-Call Techniques" 论文阅读
+- [ ]  仿照 `Linux` 的三层调度器来实现：待定
 
 *2022.4.15 updated*
 
 *2022.4.20 modified*
 
 *2022.4.22 modified*
+
+*2022.4.24 modified*
+
+*2022.4.26 modified*
+
+zCore [yuzc](https://github.com/OSLab-zCore/zCore/tree/yuzc) 分支进展
+
+- 测试完成目前 zCore 多核正常的启动和执行（不包括复杂任务调度）
+
+- 修改 rcore-user CMakeLists（去掉 `-march=rv64imac -mabi=lp64`，否则会需要 zCore 不支持的 `ld-musl-riscv64-sf.so.1`），解决了基于该用户库编写的用户测例在 zCore 上无法执行的问题
+
+- 将编写的性能测例（注意 `wait` 的阻塞问题）加入 zCore，新的问题是 `fork` 次数多会造成 `page fault`
+
+调度器仓库 [yuzc](https://github.com/OSLab-zCore/PreemptiveScheduler/commits/yuzc) 分支进展
+
+- 增加调度器的多核任务窃取
+
+
+*2022.4.26 updated*
+
+*2022.4.27 modified*
+
+*2022.4.29 modified*
 
 ## 调研汇总
 
