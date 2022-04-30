@@ -219,13 +219,12 @@ zCore [yuzc](https://github.com/OSLab-zCore/zCore/tree/yuzc) 分支进展
 *2022.4.27 modified*
 
 *2022.4.29 modified*
-=======
+
 ----
 
 刘松铭：跟随前人的工作在U740起zCore多核，但目前还有bug，猜测bug是由zCore主线更新引起的。原zCore起来的版本是一年前的版本。目前做了一些向新版本的适配，还在debug中。进度记录在[板子起zCore多核流程](./板子起zCore多核流程.md)。
 
 *2022.4.29 updated*
->>>>>>> 89d61bbb7d3586405ac5f570437132e7c355f898
 
 ## 调研汇总
 
@@ -264,4 +263,3 @@ zCore [yuzc](https://github.com/OSLab-zCore/zCore/tree/yuzc) 分支进展
   链接：https://github.com/smol-rs/async-executor
   
   描述：代码比较精简，https://zhuanlan.zhihu.com/p/137353103
-
