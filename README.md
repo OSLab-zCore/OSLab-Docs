@@ -213,12 +213,30 @@ zCore [yuzc](https://github.com/OSLab-zCore/zCore/tree/yuzc) 分支进展
 
 - 增加调度器的多核任务窃取
 
-
 *2022.4.26 updated*
 
 *2022.4.27 modified*
 
 *2022.4.29 modified*
+
+zCore [yuzc](https://github.com/OSLab-zCore/zCore/tree/yuzc) 分支进展
+
+- 经过 gdb 调试，修复了 `fork` 次数多会 `page fault` 的问题。主要原因有两个，其一是由于若一个线程与其他线程共享内存，在这个线程结束时，**会写 0**（根本原因）到 `clear_child_tid` 指针中（futex 相关）并唤醒一个在等待共享内存的线程。解决方法是在写之前检查地址的合法性，也尝试过刷新 TLB，未果，故还是用前一种方法；其二是在调度器的 `WEAK Executor` 部分，`return` 和 `drop` 的顺序有误，应该是先 `drop` 掉已经结束的任务再 `return`，否则可能在接下来的调度中执行已经结束的任务，造成 `page fault`
+- 内核 `sleep` 时间不准确，发现是有的地方出现了相对时间和绝对时间进行比较的问题，已进行修复。鉴于这个问题对时间测量有比较大影响，应尽快向主仓库提 issue 或 pull request
+- 已经可以在单或多核上通过 forktest，较为复杂的 kernel_intr_test（中断测试）和 coretest（`fork`、`sleep` 和输出的非周期混合）只能在单核上通过，上述自行设计的测例源码均在仓库的 ucore-user 文件夹下
+- 对于 coretest（主要通过其测量性能），目前在多核上 `fork` 部分运行正常，但后续直接卡死在内核，需要进一步调试。除此之外，该测例目前在 qemu 上的时间测量很不准确，争取尽快在板子上进行尝试
+
+调度器仓库 [yuzc](https://github.com/OSLab-zCore/PreemptiveScheduler/commits/yuzc) 分支进展
+
+- 支持根据多核负载均衡执行新 `spawn` 任务
+- 支持动态输出在哪个核上跑的任务
+- 加入了简单的优先级更新调度机制，但目前仍有一些编译警告需要修复
+
+*2022.5.2 updated*
+
+*2022.5.3 modified*
+
+*2022.5.6 updated*
 
 ----
 
