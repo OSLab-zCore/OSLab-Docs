@@ -244,6 +244,22 @@ zCore [yuzc](https://github.com/OSLab-zCore/zCore/tree/yuzc) 分支进展
 
 *2022.4.29 updated*
 
+-------
+
+刘松铭：参考[官方文档](https://sifive.cdn.prismic.io/sifive/b9376339-5d60-45c9-8280-58fd0557c2f0_hifive-unmatched-gsg-v1p4_ZH.pdf)制作启动SD卡。
+
+*2022.5.1 updated*
+
+--------
+
+刘松铭：利用假期几天时间尝试了几种制作SD卡的办法，但是都没有成功。进度记录在[制作SD卡流程](./制作SD卡流程.md)。目前问题还是无法恢复SD卡之前的数据，接下来会考虑如下的解决方案：
+
+1. 尝试石振兴老师提供的链接，看看能不能恢复原来的数据。
+2. 使用大容量的移动硬盘，继续按照官方文档制作镜像。
+3. 想办法找个好的SD卡，拷贝数据。
+
+*2022.5.7 updated*
+
 ## 调研汇总
 
 - glommio
