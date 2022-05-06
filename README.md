@@ -236,7 +236,7 @@ zCore [yuzc](https://github.com/OSLab-zCore/zCore/tree/yuzc) 分支进展
 
 *2022.5.3 modified*
 
-*2022.5.6 updated*
+*2022.5.6 modified*
 
 ----
 
