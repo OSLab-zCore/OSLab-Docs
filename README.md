@@ -229,7 +229,6 @@ zCore [yuzc](https://github.com/OSLab-zCore/zCore/tree/yuzc) 分支进展
 调度器仓库 [yuzc](https://github.com/OSLab-zCore/PreemptiveScheduler/commits/yuzc) 分支进展
 
 - 支持根据多核负载均衡执行新 `spawn` 任务
-- 支持动态输出在哪个核上跑的任务
 - 加入了简单的优先级更新调度机制，但目前仍有一些编译警告需要修复
 
 *2022.5.2 updated*
@@ -237,6 +236,26 @@ zCore [yuzc](https://github.com/OSLab-zCore/zCore/tree/yuzc) 分支进展
 *2022.5.3 modified*
 
 *2022.5.6 modified*
+
+zCore [yuzc](https://github.com/OSLab-zCore/zCore/tree/yuzc) 分支进展
+
+- 解决之前时间统计为负的情况，主要原因是传入的参数与用户库中不符
+- 对于 coretest（主要通过其测量性能），修复其目前在多核上直接卡死的问题（主要通过将多核调度器实装），目前用时基本和核数成反比
+- 对于单核调度器（调度器仓库的主分支），如果 zCore 运行在两个（或更多）核上，coretest 卡死在 `fork` 后的输出，kernel_intr_test 的输出也不对
+- 对于多核调度器，有一定概率出现借用报错（rust 相关），可能是某些锁的问题
+- 整理上述问题的复现方法到文档中，发给张译仁助教，下一步是与他沟通调试
+
+调度器仓库 [yuzc](https://github.com/OSLab-zCore/PreemptiveScheduler/commits/yuzc) 分支进展
+
+- 解决编译警告，实装在上面的 zCore 分支上
+- 支持动态输出在哪个核上跑的任务
+- 基于优先级的调度需要讨论一下必要性，严格保序会出现数据结构锁的问题，影响性能，所以目前没有实装
+
+*2022.5.9 updated*
+
+*2022.5.12 modified*
+
+*2022.5.13 modified*
 
 ----
 
