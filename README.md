@@ -279,6 +279,16 @@ zCore [yuzc](https://github.com/OSLab-zCore/zCore/tree/yuzc) 分支进展
 
 *2022.5.7 updated*
 
+---------
+
+刘松铭：完成SD卡的制作，研发出一套网络起zCore的操作。目前已经可以成功进入内核。
+
+1. SD制作的文档记录在[制作SD卡流程](制作SD卡流程.md).
+2. 网络起zCore的方法记录在[板子起zCore多核流程](板子起zCore多核流程.md).
+3. 目前SD卡内的镜像并不是原厂镜像。我们尝试了制作原厂镜像但是失败。SD卡的镜像是Ubuntu官方给U740做的镜像，内部的Uboot可以使用。此外，目前只是能进入到内核，但是还不能完全起来，还有bug。
+
+*2022.5.14 updated*
+
 ## 调研汇总
 
 - glommio
