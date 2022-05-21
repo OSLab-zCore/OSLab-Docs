@@ -303,6 +303,8 @@ zCore [yuzc](https://github.com/OSLab-zCore/zCore/tree/yuzc) & [lsm-yzc-merge](h
 
 刘松铭：BitmapAllocator分配失败的bug已经解决。目前的问题是U740给的可用地址不能都访问，会发生read page fault。估计可能是end的返回有问题。
 
+*2022.5.20 updated*
+
 ## 调研汇总
 
 - glommio
