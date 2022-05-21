@@ -257,6 +257,16 @@ zCore [yuzc](https://github.com/OSLab-zCore/zCore/tree/yuzc) 分支进展
 
 *2022.5.13 modified*
 
+zCore [yuzc](https://github.com/OSLab-zCore/zCore/tree/yuzc) & [lsm-yzc-merge](https://github.com/OSLab-zCore/zCore/tree/lsm-yzc-merge) 分支进展
+
+- 对多核支持中修复的 bug 提交 PR 到主分支
+
+- 提交测例状态修改的 PR 到 [zcore-test](https://github.com/rcore-os/zcore-tests) 仓库
+
+- 多核多任务出现的死锁，定位到 kernel-sync 仓库的互斥锁问题
+
+*2022.5.20 modified*
+
 ----
 
 刘松铭：跟随前人的工作在U740起zCore多核，但目前还有bug，猜测bug是由zCore主线更新引起的。原zCore起来的版本是一年前的版本。目前做了一些向新版本的适配，还在debug中。进度记录在[板子起zCore多核流程](./板子起zCore多核流程.md)。
