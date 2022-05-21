@@ -118,7 +118,7 @@
 => ping 192.168.50.95 # 可以试一下ping主机
 => saveenv # 保存配置到flash
 # 之后可以直接跳到这里开始
-=> tftp 0xc0000000 zcore-fu740.itb # 下载镜像到内存
-=> bootm 0xc0000000 # 启动
+=> tftp 0xc2000000 zcore-fu740.itb # 下载镜像到内存
+=> bootm 0xc2000000 # 启动
 ```
 
