@@ -305,6 +305,21 @@ zCore [yuzc](https://github.com/OSLab-zCore/zCore/tree/yuzc) & [lsm-yzc-merge](h
 
 *2022.5.20 updated*
 
+------
+
+刘松铭：zCore单核已经可以在U740上boot起来，多核还存在问题。
+
+进展：
+
+- 解决了PageFault的问题：将device tree占用的空间从free memory中剔除，并且增加一个对此的只读页表映射；可用物理的地址的最高为0xFFFFF000，避免上取整后溢出。
+- 解决了找不到plic的问题：利用dtc将原始的dtb反汇编成可读文本，从中找到plic的tag，修改parse的代码，使得能找到plic。在有了plic后，u740就能处理外部中断。原本不需要plic，而现在需要，是因为多核起来存在核间中断。
+
+当前问题：
+
+- 多核起来后会在很奇怪的位置发生执行PageFault，地址在0x7FFFFFFE，原因暂时没找到。
+
+*2022.5.27 updated*
+
 ## 调研汇总
 
 - glommio

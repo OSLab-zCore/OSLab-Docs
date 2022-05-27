@@ -102,6 +102,10 @@
 
 5. 串口的波特率选择115200
 
+6. 更多修改请看commits
+
+    见[u740分支](https://github.com/OSLab-zCore/zCore/commits/u740)。
+
 ## 网络起zCore
 
 基本原理是通过一台主机搭建tftp服务，在板子上通过Uboot访问网络，从网络把主机中的镜像文件下载到内存，再从内存中boot。
@@ -118,7 +122,7 @@
 => ping 192.168.50.95 # 可以试一下ping主机
 => saveenv # 保存配置到flash
 # 之后可以直接跳到这里开始
-=> tftp 0xc2000000 zcore-fu740.itb # 下载镜像到内存
-=> bootm 0xc2000000 # 启动
+=> tftp 0xc0000000 zcore-fu740.itb # 下载镜像到内存
+=> bootm 0xc0000000 # 启动
 ```
 
