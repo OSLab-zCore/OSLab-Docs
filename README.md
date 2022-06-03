@@ -362,8 +362,13 @@ zCore [yuzc](https://github.com/OSLab-zCore/zCore/tree/yuzc) 分支进展 & 调�
 
 - 最后发现是依赖库有问题。因为依赖库内写死了最多四个核，核的编号是`0,1,2,3`，但是u740的主核编号是`1,2,3,4`。
 - 已经在本地打了patch，并向有问题的仓库提交了pr（包括[kernel-sync](https://github.com/DeathWish5/kernel-sync)和[PreemptiveScheduler](https://github.com/DeathWish5/PreemptiveScheduler)）。
-- 在u740上测试了测例（单核和多核）。
+- 在u740上测试了测例，全部通过。
 - 将[u740分支](https://github.com/OSLab-zCore/zCore/tree/u740)更新上主线的进度。
+
+下一步计划
+
+- 串口输入的支持
+- 测多核调度器的性能以及正确性（测例），与单核调度器对比，录制DEMO
 
 *2022.6.3 updated*
 
