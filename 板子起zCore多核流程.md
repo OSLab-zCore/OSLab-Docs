@@ -146,7 +146,10 @@
 => ping 192.168.50.95 # 可以试一下ping主机
 => saveenv # 保存配置到flash
 # 之后可以直接跳到这里开始
-=> tftp 0xc0000000 zcore-fu740.itb # 下载镜像到内存
+# 下载镜像到内存
+# 注意在最新版的zCore需要DTB 8对齐，但是在Image中DTB仅是4对齐
+# 因此这里需要看情况选0xc0000000或0xc0000004
+=> tftp 0xc0000000 zcore-fu740.itb
 => bootm 0xc0000000 # 启动
 ```
 
