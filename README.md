@@ -286,7 +286,10 @@ zCore [yuzc](https://github.com/OSLab-zCore/zCore/tree/yuzc) 分支进展 & 调�
 
 于子淳：
 
-- https://github.com/OSLab-zCore/zCore/actions/runs/2426925844（单核调度器版本）
+- 更新后的单核/多核调度器已经通过 CI
+- 在集成测例的过程中，并撰写说明文档
+  - 单核调度器：https://github.com/OSLab-zCore/zCore/actions/runs/2426925844
+
 
 ----
 
