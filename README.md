@@ -341,6 +341,36 @@ zCore [yuzc](https://github.com/OSLab-zCore/zCore/tree/yuzc) 分支进展 & 调�
 
 *2022.5.27 updated*
 
+--------
+
+当前解决的bug
+
+- 解决了找不到时钟中断handler的bug，原因是后面获取irq的逻辑有问题。但不知道为什么在Qemu上没有发现这样的问题
+
+当前问题
+
+- 单核能够正常启动，三核及以下能正常启动，但是到四个核会在`zcore_loader::linux::run()`处发生执行PageFault。
+
+可选的操作
+
+- 将页表扩展为16G
+- 串口输入的支持
+
+*2022.5.30 updated*
+
+-----
+
+刘松铭：zCore多核已经可以在u740上boot起来。
+
+进展
+
+- 最后发现是依赖库有问题。因为依赖库内写死了最多四个核，核的编号是`0,1,2,3`，但是u740的主核编号是`1,2,3,4`。
+- 已经在本地打了patch，并向有问题的仓库提交了pr（包括[kernel-sync](https://github.com/DeathWish5/kernel-sync)和[PreemptiveScheduler](https://github.com/DeathWish5/PreemptiveScheduler)）。
+- 在u740上测试了测例（单核和多核）。
+- 将[u740分支](https://github.com/OSLab-zCore/zCore/tree/u740)更新上主线的进度。
+
+*2022.6.3 updated*
+
 ## 调研汇总
 
 - glommio
