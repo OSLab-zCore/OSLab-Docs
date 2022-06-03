@@ -2,11 +2,11 @@
 
 本文档描述了在U740上起zCore多核的过程。
 
-## 准备
+## 代码上的修改
 
-将[zCore](https://github.com/rcore-os/zCore) clone到本地，参考[已有文档](./参考资料/doc.pdf)对其进行修改
+将[zCore](https://github.com/rcore-os/zCore)clone到本地，参考[已有文档](./参考资料/doc.pdf)对其进行修改。也可以直接从[u740分支](https://github.com/OSLab-zCore/zCore/commits/u740)上拉下来我们已经修改好的为u740适配的版本。
 
-以下是对原文档的一些修改：
+以下在原文档的基础上做的一些修改：
 
 1. 对编译image过程的一些修改
 
@@ -102,9 +102,33 @@
 
 5. 串口的波特率选择115200
 
-6. 更多修改请看commits
+6. 关于plic
 
-    见[u740分支](https://github.com/OSLab-zCore/zCore/commits/u740)。
+    原来的从dtb里找plic的逻辑不适用，因为u740的plic的tag比较独特。需要单独为其添加解析逻辑。具体的代码修改见[commit](https://github.com/OSLab-zCore/zCore/commit/e83600f39b0cdc03572cb09881d4a862c3426649)。
+
+7. 关于内存映射的调整
+
+    u740给了16个G的内存，但是zCore里给riscv留的地址空间不支持这么大。因此在建立页表的时候需要截断多余的内存，并且要把镜像里放dtb的位置单独留出来（我们的dtb是和镜像打包在一起的）。具体的代码修改见[commit](https://github.com/OSLab-zCore/zCore/commit/aad823267441d8eaae7ffbe450b7e1694e612e82)。
+
+8. 关于内存映射的调整
+
+    u740给了16个G的内存，但是zCore里给riscv留的地址空间不支持这么大。因此在建立页表的时候需要截断多余的内存，并且要把镜像里放dtb的位置单独留出来（我们的dtb是和镜像打包在一起的）。具体的代码修改见[commit](https://github.com/OSLab-zCore/zCore/commit/aad823267441d8eaae7ffbe450b7e1694e612e82)。
+
+9. 关于timer的调整
+
+    目前timer的有关处理是有bug的，但不知道为何在qemu上没问题，到了u740上就会显现出来。具体的代码修改见这个[commit](https://github.com/OSLab-zCore/zCore/commit/25b73d73407b1abb065bc7951a38f77bf822cf8b)和这个[commit](https://github.com/OSLab-zCore/zCore/commit/af152b62f791e6cd79af6f7521d8200af5777f30)。
+
+10. 关于依赖的修改
+
+    原zCore的两个依赖仓库（包括[kernel-sync](https://github.com/DeathWish5/kernel-sync)和[PreemptiveScheduler](https://github.com/DeathWish5/PreemptiveScheduler)）强行把cpu的数量写死了，这导致会在u740上产生冲突。目前已经打了patch，并且提交了pr，未来应该不存在这样的问题。
+
+11. 关于cpu index
+
+     u740的主核编号是1-4，需要从1号开始启动。但是zCore的逻辑是用0开始启动，这会导致起小核，进而产生问题（我们没有对小核进行特殊配置，也不打算使用）。因此我们需要单独为u740修改这部分的逻辑。具体代码修改见[commit](https://github.com/OSLab-zCore/zCore/commit/6b1d0d4624a8cc19f7a86749ff8aa31a2fb3fd49)。
+
+12. 更多细节修改
+
+     请看[u740分支的commits](https://github.com/OSLab-zCore/zCore/commits/u740)。
 
 ## 网络起zCore
 
