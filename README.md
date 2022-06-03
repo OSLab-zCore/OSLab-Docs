@@ -284,6 +284,10 @@ zCore [yuzc](https://github.com/OSLab-zCore/zCore/tree/yuzc) 分支进展 & 调�
 
 *2022.5.27 modified*
 
+于子淳：
+
+- https://github.com/OSLab-zCore/zCore/actions/runs/2426925844（单核调度器版本）
+
 ----
 
 刘松铭：跟随前人的工作在U740起zCore多核，但目前还有bug，猜测bug是由zCore主线更新引起的。原zCore起来的版本是一年前的版本。目前做了一些向新版本的适配，还在debug中。进度记录在[板子起zCore多核流程](./板子起zCore多核流程.md)。
