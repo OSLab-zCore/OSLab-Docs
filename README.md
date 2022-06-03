@@ -320,6 +320,23 @@ zCore [yuzc](https://github.com/OSLab-zCore/zCore/tree/yuzc) & [lsm-yzc-merge](h
 
 *2022.5.27 updated*
 
+--------
+
+当前解决的bug
+
+- 解决了找不到时钟中断handler的bug，原因是后面获取irq的逻辑有问题。但不知道为什么在Qemu上没有发现这样的问题
+
+当前问题
+
+- 单核能够正常启动，三核及以下能正常启动，但是到四个核会在`zcore_loader::linux::run()`处发生执行PageFault。
+
+可选的操作
+
+- 将页表扩展为16G
+- 串口输入的支持
+
+*2022.5.30 updated*
+
 ## 调研汇总
 
 - glommio
