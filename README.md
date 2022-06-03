@@ -267,6 +267,23 @@ zCore [yuzc](https://github.com/OSLab-zCore/zCore/tree/yuzc) & [lsm-yzc-merge](h
 
 *2022.5.20 modified*
 
+zCore [yuzc](https://github.com/OSLab-zCore/zCore/tree/yuzc) 分支进展 & 调度器仓库 [master](https://github.com/OSLab-zCore/PreemptiveScheduler/commits/master) 分支进展 & 调度器仓库 [yuzc](https://github.com/OSLab-zCore/PreemptiveScheduler/commits/yuzc) 分支进展
+
+- 解决了两个比较关键的问题，其一是单核调度器跑多核 `sleep` 卡死，原因是时钟中断（本应 local）的处理并没有在每个核上都初始化，导致只有主核可以处理时钟中断，原先只允许在一个核上处理的原因不明（通过一个原子变量保证）；其二是多核调度器跑多核 shell 有概率没法进行输入，经调试发现，如果任务被分配到主核上，可以正常，如果在副核上，原因是只有主核能通过外设中断（在这里就是键盘输入）进入中断处理程序，全局唤醒等待中断的协程，而主核在没有任务时只会空转，不会开中断，副核虽然有 shell 这个任务，开中断，但没有办法处理，在宏观上造成无法输入的情况
+- 总的进度是单核/多核调度器跑多核/单核 zCore 都没有问题，本地通过 coretest，多核调度器跑多核的 libc-test 等更新 CI 后在线跑
+- kernel-sync 仓库死锁问题已由张译仁助教解决
+
+板子上跑测例进展
+
+- 编写打包测例程序，希望用一个程序直接在板子上跑完所有测例，不用进终端，能省去写驱动的时间（当然有时间还是会写）
+- 目前 zCore 更新了编译方式，我在 Mac 上尝试编译 rootfs 会出问题（shadow-rs 的依赖被写死到只能支持 x86_64），目前尚不明确这样的目的
+
+*2022.5.23 updated*
+
+*2022.5.26 modified*
+
+*2022.5.27 modified*
+
 ----
 
 刘松铭：跟随前人的工作在U740起zCore多核，但目前还有bug，猜测bug是由zCore主线更新引起的。原zCore起来的版本是一年前的版本。目前做了一些向新版本的适配，还在debug中。进度记录在[板子起zCore多核流程](./板子起zCore多核流程.md)。
