@@ -293,6 +293,14 @@ zCore [yuzc](https://github.com/OSLab-zCore/zCore/tree/yuzc) 分支进展 & 调�
 
 *2022.6.3 updated*
 
+- 尝试利用 lmbench 来进行进程切换开销的测试，由于之前并没有该测试集在 zCore 上测试的经历，对该测试集的代码和编译方式进行了对 zCore 的适配（主要原因是该测试集所用的 rpc 库是一个很老的库，并不被现在的 riscv64 交叉编译器支持），适配后的代码放在 [zcore-user](https://github.com/OSLab-zCore/zcore-user) 中
+  - 在 Qemu 测试的过程中，发现原先 zCore 可能出现多核中断处理错误的情况（概率很小），在 zCore [u740](https://github.com/OSLab-zCore/zCore/tree/u740) 分支上进行了修复
+  - 进行了多核调度器写法的一点改进，原先如果得不到 `RefCell` 不会阻塞式等待而是直接 `panic`，并不合理，将其修改为阻塞式等待的 `Mutex`，还有一点是在 `poll` 的时候加入检查当前任务是否已经结束的逻辑，防止多核窃取到刚结束还未 `drop` 的任务并在这个小间隙中执行，造成 `panic`，在调度器仓库 [yuzc](https://github.com/OSLab-zCore/PreemptiveScheduler/commits/yuzc) 分支上进行了修复
+- 在 U740 上利用设计的多核异步调度器进行多核调度测例 coretest、集成测例 libctest 和适配在 zCore 上的 lmbench 的测试
+- 将调度器和测例的设计记录在[多核异步调度器设计文档](./多核异步调度器设计文档.md)
+
+*2022.6.9 updated*
+
 
 ### 第二阶段2：U740上起多核zCore
 
