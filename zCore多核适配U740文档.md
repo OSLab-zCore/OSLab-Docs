@@ -1,4 +1,4 @@
-# U740起zCore多核
+# 在U740上起zCore多核
 
 本文档描述了在U740上起zCore多核的过程。
 
@@ -26,7 +26,7 @@
         #address-cells = <1>;
      
         images {
-            kernel@zCoreFU740 {
+            kernel {
                 description = "Linux kernel for zCore-FU740";
                 data = /incbin/("./zcore.bin.gz");
                 type = "kernel";
@@ -36,7 +36,7 @@
                 load = <0x80200000>;
                 entry = <0x80200000>;
             };
-            fdt@zCoreFU740 {
+            fdt {
                 description = "Flattened Device Tree blob for zCoreFU740";
                 data = /incbin/("./hifive-unmatched-a00.dtb");
                 type = "flat_dt";
@@ -46,11 +46,11 @@
         };
      
         configurations {
-            default = "conf@zCoreFU740";
-            conf@zCoreFU740 {
+            default = "conf";
+            conf {
                 description = "Boot Linux kernel with FDT blob";
-                kernel = "kernel@zCoreFU740";
-                fdt = "fdt@zCoreFU740";
+                kernel = "kernel";
+                fdt = "fdt";
             };
         };
     };
@@ -130,7 +130,7 @@
 
      请看[u740分支的commits](https://github.com/OSLab-zCore/zCore/commits/u740)。
 
-## 网络起zCore
+## 通过网络起zCore多核
 
 基本原理是通过一台主机搭建tftp服务，在板子上通过Uboot访问网络，从网络把主机中的镜像文件下载到内存，再从内存中boot。
 

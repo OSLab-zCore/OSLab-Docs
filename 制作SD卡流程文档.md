@@ -1,6 +1,6 @@
 # 制作U740启动用的SD卡
 
-下面记录我们尝试的几种制作sd卡的方法。
+下面记录我们尝试的几种制作sd卡的方法。最后成功的方法是使用Ubuntu官方提供的镜像。
 
 ## 直接使用官网的镜像（失败）
 
@@ -61,13 +61,14 @@ dd的命令不要指定sd卡的分区（即`dd of=/dev/sdbX`），而是整个�
 
    安装完成后，**记得删除**`build`目录，再运行一次`setup.sh`，否则接下来可能会缺少`MACHINE`的选项。
 
-   最后没安装成功，原因是电脑磁盘不够，这个build貌似需要$<200\mathrm{\ GiB}$。
+   最后没安装成功，原因是电脑磁盘不够，这个build貌似需要$\approx 200\mathrm{\ GiB}$。
 
-## 通过Ubuntu提供的镜像（成功）
+## 使用Ubuntu官方提供的镜像（成功）
 
-通过下列链接下载u740 Ubuntu镜像
+通过下列链接下载u740 Ubuntu镜像：
 
 http://cdimage.ubuntu.com/releases/21.10/release/
 
 直接将镜像dd到sd卡中，注意不要指定sd卡的分区（即`dd of=/dev/sdbX`），而是整个覆盖（即`dd of=/dev/sdb`）。
 
+可以使用其中的Uboot，成功！
