@@ -12,9 +12,13 @@
 
 - 期末展示PPT及DEMO视频
 
-  由于文件过大，所以我们就没有将其放入GitHub仓库。
+  由于文件过大，所以我们没有将其放入GitHub仓库。
 
-  我们这里给出[云盘下载链接](https://cloud.tsinghua.edu.cn/f/4c69b8e9a8ba4da99a3c/?dl=1)。
+  我们在这里给出清华云盘的下载链接：
+
+  - 展示PPT：[点击下载](https://cloud.tsinghua.edu.cn/f/4c69b8e9a8ba4da99a3c/?dl=1)
+
+  - DEMO视频：[点击下载](https://cloud.tsinghua.edu.cn/f/7457116a9f1f48f2885c/?dl=1)
 
 - 多核异步调度器设计文档
 
