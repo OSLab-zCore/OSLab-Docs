@@ -142,22 +142,42 @@
 
 ## 通过网络起zCore多核
 
-基本原理是通过一台主机搭建tftp服务，在板子上通过Uboot访问网络，从网络把主机中的镜像文件下载到内存，再从内存中boot。
+基本原理是在服务器（任意一台装有Linux的电脑）上搭建tftp服务，然后在板子上通过Uboot访问网络，进而把服务器中的镜像文件下载到内存，再从内存中boot。
 
-首先在主机配置tftp服务，参考[CSDN上的教程](https://blog.csdn.net/weixin_45309916/article/details/109178659?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_title~default-0.control&spm=1001.2101.3001.4242)。
+### 开机前准备
 
-接着开启板子，按任意键打断Uboot，进行一些基础配置（第一次启动需要，后面不需要）
+在服务器上配置tftp服务，参考[CSDN上的教程](https://blog.csdn.net/weixin_45309916/article/details/109178659?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_title~default-0.control&spm=1001.2101.3001.4242)。把编译好的zCore镜像放入服务器的tftp文件夹。
+
+将制作好的SD卡插入U740（制作方法见[制作SD卡流程文档](制作SD卡流程文档.md)），插口在后面的插线板。SD卡竖着插入，注意正反。
+
+确保U740已经接入电源，并且接入网线。网线另一端需要接入路由器。
+
+请确保U740和服务器在同一个网段下（即接入同一个局域网）。理论上可以用网线把U740和服务器直连，但我们测试了并没有成功。
+
+注：现在也许可以再试一次直连。因为我们更新了SD卡的镜像（目前是Ubuntu 22.04 LTS (Jammy Jellyfish)官方镜像，[访问链接](https://cdimage.ubuntu.com/releases/22.04/release/)）。
+
+### Boot过程
+
+开启板子（开关在侧面，一个圆形按钮）。
+
+按任意键打断autoboot，进入Uboot。
+
+第一次启动需要进行一些基础配置（如果已经配置过了则不再需要）
 
 ```bash
 # 第一次需要设置环境变量
-=> dhcp # 获取自己的ip, 注意此时可能会自动下载服务器中的镜像, 请通过Ctrl+C打断
-=> setenv ipaddr 192.168.50.3 # 这是上一步获得的ip
-=> setenv serverip 192.168.50.95 # 服务器的ip
-=> ping 192.168.50.95 # 可以试一下ping主机
-=> saveenv # 保存配置到flash
-# 之后可以直接跳到这里开始
-# 下载镜像到内存
-# 注意在最新版的zCore需要DTB 8对齐，但是在Image中DTB仅是4对齐
+=> dhcp	# 获取自己的ip, 注意此时可能会自动下载服务器中的镜像, 请通过Ctrl+C打断
+=> setenv ipaddr 192.168.50.3 # 这是上一步获得的ip，即自己的ip
+=> setenv serverip 192.168.50.95 # 服务器的ip，需要与自己的ip在同一网段
+=> ping 192.168.50.95 # 试一下ping主机（可选）
+=> saveenv # 保存配置到flash，之后就不再需要配置上述内容
+```
+
+从网络启动zCore
+
+```bash
+# 下载镜像到内存（假设镜像文件是zcore-fu740.itb）
+# 注意zCore解析要求DTB 8对齐，但是镜像中的DTB仅是4对齐
 # 因此这里需要看情况选0xc0000000或0xc0000004
 => tftp 0xc0000000 zcore-fu740.itb
 => bootm 0xc0000000 # 启动
